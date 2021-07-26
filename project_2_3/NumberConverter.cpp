@@ -108,7 +108,13 @@ std::string NumberConverter::decimalToBinary(int input) {
 
 std::string NumberConverter::hexToBinary(std::string input) {
     int num = hexToDecimal(input);
-    return decimalToBinary(num);
+    std::string result = decimalToBinary(num);
+    int remainder = result.length() % 4;
+    for (int i = remainder; i < 4; i++) {
+        result = "0" + result;
+    }
+    return result;
+
 }
 
 NumberConverter::NumberConverter(std::vector<double> vector) {
