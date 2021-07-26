@@ -110,3 +110,30 @@ std::string NumberConverter::hexToBinary(std::string input) {
     int num = hexToDecimal(input);
     return decimalToBinary(num);
 }
+
+NumberConverter::NumberConverter(std::vector<double> vector) {
+    this->decimalInput = vector[0];
+    this->binInput = vector[1];
+    this->hexInput = vector[2];
+    this->decimalOutput = vector[3];
+    this->binOutput = vector[4];
+    this->hexOutput = vector[5];
+}
+
+NumberConverter::~NumberConverter() {
+    std::cout << "decimal_inputs: " << decimalInput << std::endl;
+    std::cout << "binary_inputs: " << binInput << std::endl;
+    std::cout << "hex_inputs: " << hexInput << std::endl;
+    std::cout << "decimal_outputs: " << decimalOutput << std::endl;
+    std::cout << "binary_outputs: " << binOutput << std::endl;
+    std::cout << "hex_outputs: " << hexOutput << std::endl;
+}
+
+NumberConverter::NumberConverter(double d, double d1, double d2, double d3, double d4, double d5) {
+    this->decimalInput = d;
+    this->binInput = d1;
+    this->hexInput = d2;
+    this->decimalOutput = d3;
+    this->binOutput = d4;
+    this->hexOutput = d5;
+}

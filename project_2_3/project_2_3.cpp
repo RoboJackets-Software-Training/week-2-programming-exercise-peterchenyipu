@@ -21,7 +21,11 @@ std::vector<double> readInVector(std::string s) {
 }
 
 int main() {
-    NumberConverter numConv;
+    std::vector<double> params;
+    std::string paramsS;
+    std::cin >> paramsS;
+    params = readInVector(paramsS);
+    NumberConverter numConv(params);
 
     char convertType;
     std::cin >> convertType;
@@ -32,11 +36,14 @@ int main() {
     if (num.substr(0, 2) == "0x") {
         num = num.substr(2);
         inputType = 'h';
+        numConv.hexInput += 1;
     } else if (num[0] == 'b') {
         num = num.substr(1);
         inputType = 'b';
+        numConv.binInput += 1;
     } else {
         inputType = 'd';
+        numConv.decimalInput += 1;
     }
 
     std::cout << "input: " << num << std::endl;
@@ -50,7 +57,7 @@ int main() {
             result = numConv.binaryToDecimal(num);
         }
         std::cout << "result: " << result <<std::endl;
-
+        numConv.decimalOutput += 1;
     } else if (convertType == 'h') // to hex
     {
         std::string result = "";
@@ -61,6 +68,7 @@ int main() {
             result = numConv.binaryToHex(num);
         }
         std::cout << "result: " << result <<std::endl;
+        numConv.hexOutput += 1;
     } else if (convertType == 'b') // to binary
     {
         std::string result;
@@ -71,6 +79,7 @@ int main() {
             result = numConv.hexToBinary(num);
         }
         std::cout << "result: " << result <<std::endl;
+        numConv.binOutput += 1;
     }
 
 }
